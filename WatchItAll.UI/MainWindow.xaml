@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="WatchItAll.UI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WatchItAll.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="RootNavigation" IsPaneToggleButtonVisible="False" PaneDisplayMode="LeftCompact" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="navHome" Content="Home" Icon="Home" Tag="HomePage" />
+                <NavigationViewItem x:Name="navSearch" Content="Search" Icon="Find" Tag="SearchPage" />
+                <NavigationViewItem x:Name="navBookmarks" Content="Favorite" Icon="Favorite" Tag="BookmarksPage" />
+                <NavigationViewItem x:Name="navRecentlyPlayed" Content="Recently Played" Icon="Clock" Tag="RecentListPage" />
+                <NavigationViewItem x:Name="navGenres" Content="Genres" Icon="Library" Tag="GenreSelectionPage" />
+                <NavigationViewItemSeparator  />
+                <NavigationViewItem x:Name="navAbout" Content="About" Icon="Contact" Tag="AboutPage" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame" />
+        </NavigationView>
+    </Grid>
+</Page>

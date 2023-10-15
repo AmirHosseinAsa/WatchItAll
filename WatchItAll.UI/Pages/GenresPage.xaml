@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="WatchItAll.UI.Pages.GenresPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WatchItAll.UI.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:uc="using:WatchItAll.UI.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.TopAppBar>
+        <CommandBar HorizontalContentAlignment="Center"
+            IsDynamicOverflowEnabled="False" FlowDirection="RightToLeft" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" OverflowButtonVisibility="Collapsed">
+            <AppBarButton Icon="Back" Label="Back" Width="45" Click="BackButton_Click" />
+            <CommandBar.Content>
+                <TextBlock
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+FontSize="20"
+FontWeight="Bold"
+    Margin="33,10,0,0"
+x:Name="CurrentGenre"
+Text="" />
+
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0" Margin="20,15,30,10" Padding="8"  CornerRadius="10" Background="{ThemeResource NavigationViewExpandedPaneBackground}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Background="{ThemeResource BackButtonPointerOverBackgroundThemeBrush}"  HorizontalAlignment="Left" Click="LeftArrow_Click" Padding="10" CornerRadius="10">
+                    <SymbolIcon Symbol="Back" />
+                </Button>
+
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" x:Name="CurrentPage" Text="" FontSize="30" FontWeight="Bold"/>
+
+                <Button Grid.Column="2" Background="{ThemeResource BackButtonPointerOverBackgroundThemeBrush}" HorizontalAlignment="Right" Click="RightArrow_Click" Padding="10" CornerRadius="10">
+                    <SymbolIcon Symbol="Forward" />
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel HorizontalAlignment="Center">
+                        <GridView x:Name="GenreResultsList" IsItemClickEnabled="True" Height="Auto"  ItemClick="MovieList_Clicked">
+                            <GridView.ItemTemplate >
+                                <DataTemplate >
+                                    <uc:UcMovieCard Value="{Binding}" />
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </StackPanel>
+                </ScrollViewer>
+                <ProgressRing x:Name="LoadingIndicator" IsActive="True" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="NoResultsTextBlock" Text="No results found." FontSize="18" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" />
+            </Grid>
+        </Grid>
+
+    </ScrollViewer>
+</Page>

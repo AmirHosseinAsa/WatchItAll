@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="WatchItAll.UI.Pages.BookmarksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WatchItAll.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10"  >
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border
+             Margin="13,15,30,30"
+            Grid.Row="0"
+            CornerRadius="8,0,0,0">
+                <StackPanel
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left">
+
+                    <SymbolIcon Margin="0,5,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Symbol="Favorite"/>
+
+                    <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="30,-34,0,0"
+                    FontSize="32"
+                    FontWeight="Bold"
+                    Text="Favorites" />
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="1" x:Name="LoadingIndicator" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ProgressRing IsActive="True" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Grid Grid.Row="1" Loaded="MovieGrid_Loaded" x:Name="MovieGrid">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+                    <ListView x:Name="BookmarkedMovieList" IsItemClickEnabled="True" ItemClick="MovieList_Clicked">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Border CornerRadius="8" Grid.RowSpan="3">
+                                        <Image Source="{Binding ImageUrl}" Width="190" Height="280" Stretch="Fill" />
+                                    </Border>
+                                    <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold" Margin="10,5,0,0" Grid.Column="1" Grid.Row="0" />
+                                    <TextBlock Text="{Binding Year}" FontSize="14" Opacity=".8" Margin="10,40,0,0" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" />
+                                    <TextBlock Text="{Binding Detail.Overview}" TextWrapping="Wrap" Opacity=".9" FontSize="16" Margin="10,70,0,0" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="BorderBrush" Value="#141715"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                                <Setter Property="Margin" Value="0,0,0,10"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,4 @@
+C:\Users\Amirh\source\repos\WatchItAll\WatchItAll.Core\WatchItAll.Core.csproj;x86
+C:\Users\Amirh\source\repos\WatchItAll\WatchItAll.DataLayer\WatchItAll.DataLayer.csproj;x86
+C:\Users\Amirh\source\repos\WatchItAll\WatchItAll.DataLayer\WatchItAll.DataLayer.csproj;x86
+C:\Users\Amirh\source\repos\WatchItAll\WatchItAll.UI\WatchItAll.UI.csproj;x86
